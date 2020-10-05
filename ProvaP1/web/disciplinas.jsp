@@ -15,7 +15,9 @@
     <body>
         <%if (request.getParameter("salvar")!= null){
             int nota = Integer.parseInt(request.getParameter("nota"));
-            int codigo = Integer.parseInt(request.getParameter("codigo"));
+            int cod = Integer.parseInt(request.getParameter("cod"));
+            Disciplina  MudarNota = Disciplina.getList().get(cod);
+         mudarNota.setNota(nota);
         }%>
         <%@include file="WEB-INF/jspf/menu.jspf" %>
         <h1>Minhas disciplinas</h1>
@@ -24,15 +26,26 @@
             <tr>
                 <Th>Disciplina</th>
                 <Th>Ementa</th>
+                <Th>Ciclo</th>
                 <Th>Nota</th>
-                <Th>alterar</th>
                 
             </tr> 
             
             <% for( int i =0 ; i < Disciplina.getList().size();i++){
                 Disciplina disciplina = Disciplina.getList().get(i);%>
-                
-                
+                <tr>
+                    <td><%=disciplina.getNome()%></td>
+                    <td><%=disciplina.getEmenta()%></td>
+                    <td><%=disciplina.getCiclo()%></td>
+                    <td><%=disciplina.getNota()%></td>
+                    <td>
+                       <form method ="get" >
+                       <input type="number" name="nota" value"<%=disciplina.getNota()%>"/>
+                       <input type="submit" name="salvar" value="salvar"/>
+                       <input type="hidden" name="cod" value="<%= i %>"/>
+                       </form>
+                    </td> 
+                </tr>
                 
                 
               <%}%> 

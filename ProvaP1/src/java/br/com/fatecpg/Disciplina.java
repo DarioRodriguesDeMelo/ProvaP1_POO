@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Disciplina {
     
     String nome, ementa;
-     int ciclo , Nota ;
+     int ciclo , nota ;
      
      public Disciplina (String nome , String ementa, int ciclo){
      
@@ -103,6 +103,14 @@ public class Disciplina {
 
     public void setCiclo(int ciclo) {
         this.ciclo = ciclo;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
     }
      
      
